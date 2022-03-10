@@ -1,0 +1,296 @@
+@import "./css-reset";
+@import "./variables";
+@import "./mixins";
+
+* {
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    box-sizing: border-box;
+}
+
+main {
+    @include set-display (flex, center, center);
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+    
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
+    background-color: $part-one-page-color;
+}
+
+div {
+    
+    &#testimonial {
+        width: 4 * $part-one-column-width;
+        height: 6 * $part-one-row-height;
+        
+        display: grid;
+        grid-template-columns: repeat(4, $part-one-column-width);
+        grid-template-rows: repeat(6, $part-one-row-height);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        
+        border-radius: 20px;
+        box-shadow: 5px 10px 10px 5px grey;
+
+        font-size: 1.5em;
+
+        margin: 50px;
+    }
+
+    &.testimonial-text {
+        @include set-display (flex, center, center);
+        
+        grid-area: 1/1/5/5;
+        background-color: $part-one-text-background-color;
+        text-align: center;
+        padding: 20px;
+        
+        p {
+            margin-bottom: 15%;
+            line-height: 1.5;
+        }
+    }
+
+    &.footer {
+        @include set-display (flex, center, flex-end);
+        flex-direction: column;
+        grid-area: 5/1/7/5;
+
+        background-color: $part-one-footer-color;
+        
+        h1 {
+            margin-bottom: 5%;
+            color: $part-one-text-background-color;
+            overflow-y: hidden;
+        }
+        
+        p {
+            margin-bottom: 5%;
+            color: $part-one-page-color;
+            font-size: 0.8em;
+            overflow-y: hidden;
+        }
+    }
+
+    &.image {
+        @include set-display (flex, center, center);
+        
+        grid-area: 4/2/6/4;
+        border-radius: 50%;
+        border: solid 7px $part-one-text-background-color;
+    }
+
+    &.portfolio {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 4px 4px;
+    
+        .photo-element {
+            margin: auto;
+            flex: 33.3%;
+            max-width: 33.3%;
+            position: relative;
+          
+            .image {
+                vertical-align: middle;
+                width: 100%;
+                padding: 10px;
+                border-radius: 10%;
+    
+                opacity: 1;
+                display: block;
+                transition: 500ms ease;
+                backface-visibility: hidden;
+            }
+    
+            .read-more-button {
+                transition: 500ms ease;
+                opacity: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+    
+                .button-text {
+                    background-color: gray;
+                    color: white;
+                    font-size: 16px;
+                    padding: 16px 32px;
+                }
+            }
+    
+            &:hover .image {
+                opacity: 0;
+            }
+    
+            &:hover .read-more-button {
+                opacity: 1;
+            }
+        }
+    }
+
+    &.code-blog {
+        @include set-display (flex, center, left);
+        
+        position: fixed;
+        bottom: 50%;
+        right: -200px;
+        width:250px;
+        border-radius: 5px;
+        height:$social-media-size;
+        background-color: #e17b77;
+        overflow: hidden;
+        transition: right 500ms ease-in-out;
+       a {
+            color: white;
+            overflow: hidden;
+       }
+        
+       &::before {
+            content: '';
+            background-image: url("../images/blogger.png");
+            background-size: $social-media-size $social-media-size;
+            background-color: #e17b77;
+            border: none;
+            width: $social-media-size;
+            height: $social-media-size;
+            margin-right: 5px;
+            
+        }   
+    &:hover {
+            right: 0;
+        }
+    }
+
+    &.twitter {
+        @include set-display (flex, center, left);
+        
+        position: fixed;
+        bottom: calc(50% - $social-media-size);
+        right: -200px;
+        width:250px;
+        border-radius: 5px;
+        height:$social-media-size;
+        background-color: #00aced;
+        overflow: hidden;
+        transition: right 500ms ease-in-out;
+       a {
+        color: white;
+       }
+        
+       &::before {
+            content: '';
+            background-image: url("../images/twitter.png");
+            background-size: $social-media-size $social-media-size;
+            background-color: #00aced;
+            border: none;
+            width: $social-media-size;
+            height: $social-media-size;
+            margin-right: 5px;
+        }   
+    &:hover {
+            right: 0;
+        }
+    }
+    
+    &.linked-in {
+        @include set-display (flex, center, left);
+        
+        position: fixed;
+        bottom: calc(50% - (2*$social-media-size));
+        right: -200px;
+        width:250px;
+        border-radius: 5px;
+        height:$social-media-size;
+        background-color: #007bb6;
+        overflow: hidden;
+        transition: right 500ms ease-in-out;
+       a {
+        color: white;
+       }
+        
+       &::before {
+            content: '';
+            background-image: url("../images/linkedin.png");
+            background-size: $social-media-size $social-media-size;
+            background-color: #007bb6;
+            border: none;
+            width: $social-media-size;
+            height: $social-media-size;
+            margin-right: 5px;
+        }   
+    &:hover {
+            right: 0;
+        }
+    }
+
+    &.facebook {
+        @include set-display (flex, center, left);
+        
+        position: fixed;
+        bottom: calc(50% - (3*$social-media-size));
+        right: -200px;
+        width:250px;
+        border-radius: 5px;
+        height:$social-media-size;
+        background-color: #3b5998;
+        overflow: hidden;
+        transition: right 500ms ease-in-out;
+       a {
+        color: white;
+       }
+        
+       &::before {
+            content: '';
+            background-image: url("../images/facebook.png");
+            background-size: $social-media-size $social-media-size;
+            background-color: white;
+            border: none;
+            width: $social-media-size;
+            height: $social-media-size;
+            margin-right: 5px;
+        }   
+    &:hover {
+            right: 0;
+        }
+    }
+
+    &.github {
+        @include set-display (flex, center, left);
+        
+        position: fixed;
+        bottom: calc(50% - (4*$social-media-size));
+        right: -200px;
+        width:250px;
+        border-radius: 5px;
+        height:$social-media-size;
+        background-color: #333;
+        overflow: hidden;
+        transition: right 500ms ease-in-out;
+       a {
+        color: white;
+       }
+        
+       &::before {
+            content: '';
+            background-image: url("../images/github.png");
+            background-size: $social-media-size $social-media-size;
+            background-color: white;
+            border: none;
+            width: $social-media-size;
+            height: $social-media-size;
+            margin-right: 5px;
+        }   
+    &:hover {
+            right: 0;
+        }
+    }
+}
+
+
+@import "./media";

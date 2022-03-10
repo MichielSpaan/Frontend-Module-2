@@ -1,0 +1,6 @@
+@mixin set-display ($display-value, $align-value, $justify-value) {
+    display: $display-value;
+    align-items: $align-value;
+    justify-content: $justify-value;
+}
+
